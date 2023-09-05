@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get "/plants" => "plants#index"
   get "/plants/:id" => "plants#show"
-  post "/plants" => "plants#create"
+
+  get "/schedules" => "schedules#index"
+  get "/schedules/:id" => "schedules#show"
+  post "/schedules" => "schedules#create"
 
   post "/users" => "users#create"
 
