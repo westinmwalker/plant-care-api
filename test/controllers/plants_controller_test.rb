@@ -14,6 +14,6 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "description", "amount_of_sun", "days_to_water"], data.keys
+    assert_equal ["id", "image_url", "name", "description", "amount_of_sun", "days_to_water"], data.keys
   end
 end
