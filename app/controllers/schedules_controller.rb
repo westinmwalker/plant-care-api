@@ -1,5 +1,18 @@
 class SchedulesController < ApplicationController
+  require "date"
   before_action :authenticate_user
+
+  def create
+    d = DateTime.now
+    @schedule = Schedule.create(
+      plant_id: params[:plant_id],
+      user_id: current_user.id,
+      image_url: params[:image_url],
+      watering_start_date: d.strftime("%m/%d/%Y/ %H:%M"),
+    )
+
+    render :show
+  end
 
   def index
     @schedules = current_user.schedules
@@ -8,16 +21,6 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = current_user.schedules.find_by(id: params[:id])
-    render :show
-  end
-
-  def create
-    @schedule = Schedule.create(
-      plant_id: params[:plant_id],
-      user_id: params[:user_id],
-      image_url: params[:image_url],
-      watering_start_date: params[:watering_start_date],
-    )
     render :show
   end
 end
