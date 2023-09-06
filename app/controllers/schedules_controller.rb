@@ -1,11 +1,13 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @schedules = Schedule.all
-    render :index
+    @schedules = current_user.schedules
+    render template: "schedules/index"
   end
 
   def show
-    @schedule = Schedule.find_by(id: params[:id])
+    @schedule = current_user.schedules.find_by(id: params[:id])
     render :show
   end
 
