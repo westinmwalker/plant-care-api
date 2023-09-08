@@ -8,7 +8,7 @@ class SchedulesController < ApplicationController
       plant_id: params[:plant_id],
       user_id: current_user.id,
       image_url: params[:image_url],
-      watering_start_date: d.strftime("%Y/%m/%d %H:%M"),
+      watering_start_date: d.strftime("%F %R"),
     )
 
     render :show
